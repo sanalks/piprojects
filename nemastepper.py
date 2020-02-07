@@ -207,10 +207,10 @@ stepRobot = StepperRobot(left=(12,16), right=(21,20))
 # stepper = StepperMotor(stepper_pin=16,direction_pin=12)
 speed=0.9
 while True:
-    for i in range(1,2):
+    for i in range(1,20):
         stepRobot.forward(speed)
         sleep(1)
-    for j in range(1,2):
+    for j in range(1,20):
         stepRobot.backward(speed)
         sleep(1)
     #sleep(10)
