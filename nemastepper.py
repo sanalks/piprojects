@@ -234,4 +234,5 @@ while True:
             stepRobot.forward(speed)
         else :
             stepRobot.backward(speed)
+        sleep(1)
         changed = False
