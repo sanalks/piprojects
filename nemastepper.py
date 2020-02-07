@@ -4,6 +4,7 @@ from time import sleep
 from gpiozero import OutputDeviceBadValue, GPIOPinMissing
 from gpiozero import GPIODevice, Device, CompositeDevice
 from gpiozero import SourceMixin
+from gpiozero import DistanceSensor
 
 class StepperMotor(DigitalOutputDevice):
     def __init__(
@@ -202,16 +203,24 @@ class StepperRobot(SourceMixin, CompositeDevice):
         self.left_motor.stop()
         self.right_motor.stop()
 
-stepRobot = StepperRobot(left=(12,16), right=(21,20))
+stepRobot = StepperRobot(right=(12,16), left=(21,20))
 # stepRobot.forward()
 # stepper = StepperMotor(stepper_pin=16,direction_pin=12)
+sensor = DistanceSensor(echo=4, trigger=17, max_distance=1, threshold_distance=0.2)
 speed=0.9
+bool forward =True
+def inrange():
+    forward=False
+    print('Distance to nearest object is', sensor.distance, 'm')
+def outrange():
+    forward=True
+    print('Distance to nearest object is', sensor.distance, 'm')
+
+sensor.when_in_range = inrange
+sensor.when_out_of_range = outrange
+
 while True:
-    for i in range(1,20):
+    if forward == True :
         stepRobot.forward(speed)
-        sleep(1)
-    for j in range(1,20):
+    else :
         stepRobot.backward(speed)
-        sleep(1)
-    #sleep(10)
-    #pass
