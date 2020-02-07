@@ -209,18 +209,28 @@ stepRobot = StepperRobot(right=(12,16), left=(21,20))
 sensor = DistanceSensor(echo=4, trigger=17, max_distance=1, threshold_distance=0.2)
 speed=0.9
 forward =True
+changed=False
 def inrange():
-    forward=False
+    if forward== True :
+        changed =True
+        forward = False
+    else:
+        changed = False
     print('Distance to nearest object is', sensor.distance, 'm')
 def outrange():
-    forward=True
+    if forward == True:
+        changed=False
+    else:
+        changed=True
+        forward=True
     print('Distance to nearest object is', sensor.distance, 'm')
 
 sensor.when_in_range = inrange
 sensor.when_out_of_range = outrange
 
 while True:
-    if forward == True :
-        stepRobot.forward(speed)
-    else :
-        stepRobot.backward(speed)
+    if changed == True:
+        if forward == True :
+            stepRobot.forward(speed)
+        else :
+            stepRobot.backward(speed)
