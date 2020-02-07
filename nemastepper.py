@@ -208,7 +208,7 @@ stepRobot = StepperRobot(right=(12,16), left=(21,20))
 # stepper = StepperMotor(stepper_pin=16,direction_pin=12)
 sensor = DistanceSensor(echo=4, trigger=17, max_distance=1, threshold_distance=0.2)
 speed=0.9
-bool forward =True
+forward =True
 def inrange():
     forward=False
     print('Distance to nearest object is', sensor.distance, 'm')
