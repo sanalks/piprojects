@@ -229,10 +229,17 @@ sensor.when_in_range = inrange
 sensor.when_out_of_range = outrange
 
 while True:
-    if changed == True:
+    """ if changed == True:
         if forward == True :
             stepRobot.forward(speed)
         else :
             stepRobot.backward(speed)
         sleep(1)
-        changed = False
+        changed = False """
+
+    for i in range(1,20):
+        stepRobot.forward(speed)
+        sleep(1)
+    for j in range(1,20):
+        stepRobot.backward(speed)
+        sleep(1)
