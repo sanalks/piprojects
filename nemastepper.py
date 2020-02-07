@@ -209,7 +209,7 @@ stepRobot = StepperRobot(right=(12,16), left=(21,20))
 sensor = DistanceSensor(echo=4, trigger=17, max_distance=1, threshold_distance=0.2)
 speed=0.9
 forward =True
-changed=False
+changed=True
 def inrange():
     if forward== True :
         changed =True
@@ -234,3 +234,4 @@ while True:
             stepRobot.forward(speed)
         else :
             stepRobot.backward(speed)
+        changed = False
