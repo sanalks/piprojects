@@ -240,6 +240,6 @@ while True:
     for i in range(1,20):
         stepRobot.forward(speed)
         sleep(1)
-    for j in range(1,20):
-        stepRobot.backward(speed)
-        sleep(1)
+    
+    stepRobot.backward(speed)
+    sleep(60)
